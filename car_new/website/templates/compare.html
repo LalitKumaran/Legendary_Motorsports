@@ -1,0 +1,20 @@
+{% extends 'base.html' %}{% block title %}Profile{% endblock %}{% block content %}
+
+<form method="POST">
+    <label>Choose Car 1:</label>
+    <SELECT name="car1" style="font-family:verdana" class="form-select" aria-label="Default select example">
+    {% for c in car %}
+        <OPTION value={{c.id}}>{{c.car_brand}} {{c.car_model}}</OPTION>
+    {% endfor %}
+    </SELECT>
+    <br>
+    <label>Choose Car 2:</label>
+    <SELECT name="car2" style="font-family:verdana" class="form-select" aria-label="Default select example">
+    {% for c in car %}
+        <OPTION value={{c.id}}>{{c.car_brand}} {{c.car_model}}</OPTION>
+    {% endfor %}
+    </SELECT>
+    <br>
+    <button type="submit">Compare</button>
+</form>
+{% endblock %}

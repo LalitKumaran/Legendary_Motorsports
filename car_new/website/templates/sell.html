@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sign Up</title>
+ 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      crossorigin="anonymous"
+    />
+    
+    
+        <script
+          src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+          integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+          crossorigin="anonymous"
+        ></script>
+        <script
+          src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+          integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+          crossorigin="anonymous"
+        ></script>
+        <script
+          src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+          integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+          crossorigin="anonymous"
+        ></script>
+    <style media="screen">
+      *,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #080710;
+    background-image: url(3.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: fixed;
+}
+.background{
+    
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+}
+
+form{
+    height: 1650px;
+    width: 400px;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 150%;
+    left: 80%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+}
+form *{
+    font-family: 'Poppins',sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+form h3{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+
+label{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
+input{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
+::placeholder{
+    color: #e5e5e5;
+}
+button{
+    margin-top: 50px;
+    width: 100%;
+    background-color: #ffffff;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbar"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" id="home" href="/home" style="padding-right:20px;">Home</a>
+        <a class="nav-item nav-link" id="sell" href="/sell" style="padding-right:20px;">Sell</a>
+        <a class="nav-item nav-link" id="compare"  href="/compare" style="padding-right:20px;">Compare</a>
+        <a class="nav-item nav-link" id="profile" href="/profile/{{ user.id }}" style="padding-right:20px;">Profile</a>
+        <a class="nav-item nav-link" id="logout" href="/logout" style="padding-right:20px;">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  {% with messages = get_flashed_messages(with_categories=true) %} {% if
+  messages %} {% for category, message in messages %} {% if category ==
+  'error' %}
+  <div class="alert alert-danger alter-dismissable fade show" role="alert">
+    {{ message }}
+    <button type="button" class="close" data-dismiss="alert">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% else %}
+  <div class="alert alert-success alter-dismissable fade show" role="alert">
+    {{ message }}
+    <button type="button" class="close" data-dismiss="alert">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endif %} {% endfor %} {% endif %} {% endwith %}
+
+  <div class="container">{% block content %} {% endblock %}</div>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form method="POST" enctype="multipart/form-data">
+        <h3>Sell Car</h3>
+
+        <label for="Brand">Brand</label>
+        <input type="text" placeholder="Brand" name="brand" id="brand">
+
+        <label for="model">Model</label>
+        <input type="text" placeholder="Model" name="model" id="model">
+
+        <label for="regno">Registration Number</label>
+        <input type="text" placeholder="Registration Number" name="regno" id="regno">
+
+        <label for="model">Fuel Variant</label>
+        <input type="text" placeholder="Fuel Variant" name="variant" id="variant">
+
+        <label for="model">Model year</label>
+        <input type="text" placeholder="Model year" name="myear" id="myear">
+
+        <label for="model">Kilometer Driven</label>
+        <input type="text" placeholder="Kilometer Driven" name="km" id="km">
+
+        <label for="model">Quoted Price</label>
+        <input type="text" placeholder="Quoted Price" name="price" id="price">
+
+        <label for="model">Location</label>
+        <input type="text" placeholder="Location" name="location" id="location">
+  
+        <div>
+            <label for="model">Owner</label>
+            <div class="inputgrp">
+              <select style="color:black;"id="owner" name="owner">
+                <option value="1" style="color:black;">1st owner</option>
+                <option value="2" style="color:black;">2nd owner</option>
+                <option value="3" style="color:black;">3rd owner</option>
+                <option value="4" style="color:black;">4th owner</option>
+              </select>
+          </div><br>
+          <h4>Image 1</h4>
+          <input type="file" name="image1" id="image1">
+            <label for="image1"></label>
+            <h4>Image 2</h4>
+          <input type="file" name="image2" id="image2">
+            <label for="image2"></label>
+            <h4>Image 3</h4>
+          <input type="file" name="image3" id="image3">
+            <label for="image3"></label>
+
+            <button type="submit">Sell</button>
+    </form>
+</body>
+</html>

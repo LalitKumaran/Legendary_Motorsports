@@ -1,0 +1,208 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script>
+    function savereview()
+    {
+      window.alert("Thank you")
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    crossorigin="anonymous"
+  />
+  {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %} {% if category ==
+      'error' %}
+      <div class="alert alert-danger alter-dismissable fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% else %}
+      <div class="alert alert-success alter-dismissable fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endif %} {% endfor %} {% endif %} {% endwith %}
+  
+      <div class="container">{% block content %} {% endblock %}</div>
+      <script
+        src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"
+      ></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+  body {
+  font-family: 'Poppins',sans-serif;
+  margin: 0;
+}
+
+
+html {
+  box-sizing: border-box;
+  background: linear-gradient(to right, black 0%, red 100%);
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+.column {
+  float: left;
+  width: 50%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  margin: 50px;
+  text-align: center;
+  background:white;
+  color:black;
+  
+}
+
+.container {
+  padding: 0 16px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.checked {
+  color: orange;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 20px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+</style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbar"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" id="home" href="/home" style="padding-right:20px;">Home</a>
+            <a class="nav-item nav-link" id="sell" href="/sell" style="padding-right:20px;">Sell</a>
+            <a class="nav-item nav-link" id="compare"  href="/compare" style="padding-right:20px;">Compare</a>
+            <a class="nav-item nav-link" id="profile" href="/profile/{{ user.id }}" style="padding-right:20px;">Profile</a>
+            <a class="nav-item nav-link" id="logout" href="/logout" style="padding-right:20px;">Logout</a>
+          </div>
+        </div>
+      </nav>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="data:;base64,{{ car1.rendered_data1 }}"style="width:100%;size:fixed">
+      <div class="container" >
+        <h2>{{car1.car_brand}} {{car1.car_model}}</h2>
+        <p>Date Posted : {{ car1.date_posted }}</p>
+        <p>Brand : {{ car1.car_brand }}</p>
+        <p>Model : {{ car1.car_model }}</p>
+        <p>Fuel Type : {{ car1.fuel_type }}</p>
+        <p>Make Year : {{ car1.make_year }}</p>
+        <p>KM Run : {{ car1.km_run }}</p>
+        <p>Owner : {{ car1.owner }}</p>
+        <p>Location : {{ car1.location }}</p>
+        <p>Price : {{ car1.price }}</p>
+        <div class="row justify-content-center px-3 py-3">
+            <a href="/car/{{car1.id}}" class="btn btn-light">View Car</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="data:;base64,{{ car2.rendered_data1 }}"style="width:100%" >
+      <div class="container" >
+        <h2>{{car2.car_brand}} {{car2.car_model}}</h2>
+        <p>Date Posted : {{ car2.date_posted }}</p>
+        <p>Brand : {{ car2.car_brand }}</p>
+        <p>Model : {{ car2.car_model }}</p>
+        <p>Fuel Type : {{ car2.fuel_type }}</p>
+        <p>Make Year : {{ car2.make_year }}</p>
+        <p>KM Run : {{ car2.km_run }}</p>
+        <p>Owner : {{ car2.owner }}</p>
+        <p>Location : {{ car2.location }}</p>
+        <p>Price : {{ car2.price }}</p>
+        <div class="row justify-content-center px-3 py-3">
+            <a href="/car/{{car2.id}}" class="btn btn-light">View Car</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content %}
+{% for car in car %}
+      <a href="/car/{{car.id}}" class="custom-card">
+        <div class="card text-white bg-dark mb-3" style="width: 22.6rem; float: left; margin-right: 7px; margin-bottom: 10px; margin-top: 10px">
+            <img src="data:;base64,{{ car.rendered_data1 }}" class="d-block w-100" width="120px" height="220px"></img>
+            <div class="card-header">
+              <h5 class="card-title">{{car.car_brand}} {{car.car_model}}</h5>
+            </div>
+            <div class="card-body">
+              <h6 class="card-subtitle mb-2">Date Posted : {{car.date_posted}}</h6>
+              <h6 class="card-subtitle mb-2">KM Run : {{car.km_run}}</h6>
+              <h6 class="card-subtitle mb-2">Make Year : {{car.make_year}}</h6>
+              <h6 class="card-subtitle mb-2">Location : {{car.location}}</h6>
+              <b><h6 class="card-subtitle mb-2">Price : {{car.price}}</h6></b>
+              <p class="card-text"></p>
+            </div>
+        </div>
+      </a>
+{% endfor %}
+{% endblock %}

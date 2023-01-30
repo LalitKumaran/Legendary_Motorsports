@@ -1,0 +1,72 @@
+{% extends 'base.html' %}{% block title %}Profile{% endblock %}{% block content %}
+    <div class="container py-5 h-50">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-12 col-xl-4">
+          <div class="card" style="border-radius: 15px; background-color:rgb(236, 227, 227)">
+            <div class="card-body text-center">
+              <h4 class="mb-2">{{name1}} {{last1}}</h4>
+              <p class="text-muted">{{email}}</p>
+              <p class="text-muted">{{phone}}</p>
+              <p class="text-muted">{{city}}</p>
+              <br>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+    <h3>Your Cars</h3>
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <div class="row justify-content-center px-3 py-3">
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <th>No. </th>
+                        <th>Car</th>
+                        <th>Date Posted</th>
+                        <th>Unlist</th>
+                    </tr>
+                    {% for car in car %}{% if car.user_id==user.id %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ car.car_brand }} {{ car.car_model }}</td>
+                        <td>{{ car.date_posted }}</td>
+                        <td><a href="/removecar/{{car.id}}" class="btn btn-light">Remove</a>
+                    </tr>
+                    {% endif %} {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+  <h3>Bookings on your cars</h3>
+  <div class="table-wrapper-scroll-y my-custom-scrollbar">
+      <div class="row justify-content-center px-3 py-3">
+          <table class="table table-striped">
+              <tbody>
+                  <tr>
+                      <th>No. </th>
+                      <th>Car</th>
+                      <th>Username</th>
+                      <th>Location</th>
+                      <th>Contact</th>
+                      <th>Remove Booking</th>
+                  </tr>
+                  {% for carr in car %} {% if carr.user_id==user.id %}
+                  {% for bookk in book %} {% if bookk.car_id==carr.id %}                  
+                  <tr>
+                      <td>{{ loop.index }}</td>
+                      <td>{{ carr.car_brand }} {{ carr.car_model }}</td>
+                      {% for usee in usee %} {% if usee.id==bookk.user_id %}
+                        <td>{{ usee.username }}</td>
+                        <td>{{ usee.city }}</td>
+                        <td>{{ usee.phone }}</td>
+                      {% endif %}{% endfor %}
+                      <td><a href="/removebook/{{bookk.id}}" class="btn btn-light">Remove</a>
+                  </tr>
+                  {% endif %} {% endfor %}
+                  {% endif %} {% endfor %}
+              </tbody>
+          </table>
+      </div>
+  </div>
+{% endblock %}
