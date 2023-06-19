@@ -21,10 +21,22 @@
     a.custom-card:hover {
       color: inherit;
     }
+    @media only screen and (max-width: 600px) {
+    /* horizontal scrollbar for tables if mobile screen */
+    table{
+        overflow-x: auto;
+        display: block;
+    }
+    body{
+    background-image:url("{{ url_for('static', filename='img1.jpg') }}");
+  }
+    }
+
   </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <img class="nav-item nav-link" src="{{ url_for('static', filename='lm.png') }}" width="200px" height="40px" alt="logo">
       <button
         class="navbar-toggler"
         type="button"
@@ -77,11 +89,6 @@
       src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
-    ></script>
-
-    <script
-      type="text/javascript"
-      src="{{ url_for('static', filename='index.js') }}"
     ></script>
   </body>
 </html>

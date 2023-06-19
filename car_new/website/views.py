@@ -71,8 +71,7 @@ def sign_up():
 
 @views.route('/',methods=['GET','POST'])
 def index():
-    return render_template("index.html")
-
+    return redirect(url_for('views.login'))
 @views.route('/home', methods=['GET', 'POST'])
 def home():
     if curuser != 0:

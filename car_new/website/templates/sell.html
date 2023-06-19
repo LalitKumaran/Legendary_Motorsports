@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Sign Up</title>
+    <title>Sell</title>
  
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -47,7 +47,7 @@
 }
 body{
     background-color: #080710;
-    background-image: url(3.jpg);
+    background-image: url('https://wallpaperaccess.com/full/1838837.jpg');
     background-size: cover;
     background-attachment: fixed;
     background-repeat: fixed;
@@ -68,8 +68,8 @@ form{
     background-color: rgba(255,255,255,0.13);
     position: absolute;
     transform: translate(-50%,-50%);
-    top: 150%;
-    left: 80%;
+    top: 160%;
+    left: 50%;
     border-radius: 10px;
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255,255,255,0.1);
@@ -83,6 +83,15 @@ form *{
     outline: none;
     border: none;
 }
+@media screen and (max-width: 600px){
+  form{
+    top: 110%;
+  }
+  body{
+    background-image:url("{{ url_for('static', filename='img1.jpg') }}");
+  }
+}
+
 form h3{
     font-size: 32px;
     font-weight: 500;
@@ -96,7 +105,7 @@ label{
     font-size: 16px;
     font-weight: 500;
 }
-input{
+input,select{
     display: block;
     height: 50px;
     width: 100%;
@@ -126,6 +135,7 @@ button{
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <img class="nav-item nav-link" src="static/lm.png" width="200px" height="40px" alt="Legendary Motorsports">
     <button
       class="navbar-toggler"
       type="button"
@@ -164,10 +174,10 @@ button{
   {% endif %} {% endfor %} {% endif %} {% endwith %}
 
   <div class="container">{% block content %} {% endblock %}</div>
-    <div class="background">
+    <!-- <div class="background">
         <div class="shape"></div>
         <div class="shape"></div>
-    </div>
+    </div> -->
     <form method="POST" enctype="multipart/form-data">
         <h3>Sell Car</h3>
 
@@ -198,7 +208,7 @@ button{
         <div>
             <label for="model">Owner</label>
             <div class="inputgrp">
-              <select style="color:black;"id="owner" name="owner">
+              <select id="owner" name="owner">
                 <option value="1" style="color:black;">1st owner</option>
                 <option value="2" style="color:black;">2nd owner</option>
                 <option value="3" style="color:black;">3rd owner</option>

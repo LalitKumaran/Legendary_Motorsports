@@ -65,10 +65,8 @@
 body{
     background-color: #080710;
     background-color: #080710;
-    background-image: url('https://wallpaperaccess.com/full/1838837.jpg');
-    /* background-image: url('../static/img.jpg'); */
+    background-image:url("{{ url_for('static', filename='img.jpg') }}");
     background-size: cover;
-    background-attachment: fixed;
 }
 .background{
     width: 430px;
@@ -99,6 +97,15 @@ form *{
     letter-spacing: 0.5px;
     outline: none;
     border: none;
+}
+@media screen and (max-width: 600px){
+  form{
+    top: 65%;
+    left: 50%;
+  }
+  body{
+    background-image:url("{{ url_for('static', filename='img1.jpg') }}");
+  }
 }
 form h3{
     font-size: 32px;
@@ -174,6 +181,7 @@ button{
         <input type="password" placeholder="Password" name="password2" id="password2">
         
         <button type="submit">Sign Up</button>
+        <p style="font-size: small;">Already have an account?<a href="/login"><u>Login</u></a></p>
     </form>
 </body>
 </html>

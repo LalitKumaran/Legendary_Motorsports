@@ -1,10 +1,9 @@
-from flask import Flask
+from flask import Flask,render_template,request
 from flask_sqlalchemy import SQLAlchemy
 from os import path
 from distutils.log import debug
 from email import message
 from sre_constants import SUCCESS
-from flask import Flask,render_template,request
 from flask_mail import Mail,Message
 
 db = SQLAlchemy()
